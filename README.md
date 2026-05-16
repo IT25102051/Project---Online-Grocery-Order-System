@@ -2,11 +2,13 @@
 > A full-stack Java Web Application (JSP + Servlets) for managing an online grocery store — built for customers, admins, and delivery personnel.
 ---
 📌 Project Overview
+---
 CeylonFresh is a multi-role online grocery ordering system developed using Java Servlets, JSP, and file-based persistence (no database). It supports three distinct user roles — Customer, Admin, and Delivery — each with their own dashboard and functionality.
 ---
 🚀 Features
 ---
 👤 Customer
+---
 Register and log in securely
 Browse products by category or search
 Add products to cart and manage quantities
@@ -16,6 +18,7 @@ Submit and view product reviews and ratings
 Receive real-time notifications (order status updates)
 ---
 🛠️ Admin
+---
 Manage users (view, delete)
 Add, update, and delete products (with image URL, expiry date, description)
 View and manage all orders (update status: Confirmed → Prepared)
@@ -26,6 +29,7 @@ View and moderate product reviews
 View reports and analytics
 ---
 🚚 Delivery Personnel
+---
 View orders ready for pickup (status: Prepared)
 Mark orders as Picked Up, Delivered, or Not Delivered
 Automatically update payment status for Cash on Delivery orders
@@ -33,6 +37,7 @@ Receive low-stock alerts and inventory notifications
 Manage inventory restock status
 ---
 🏗️ Technology Stack
+---
 Layer	Technology
 Backend	Java Servlets (javax.servlet)
 Frontend	JSP (JavaServer Pages), HTML, CSS, JavaScript
