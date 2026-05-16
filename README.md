@@ -92,14 +92,23 @@ Register a new account or use the admin login page at:
 💾 Data Storage
 All data is persisted in plain-text CSV-style files under `{webapp_root}/data/`:
 File	Contents
+---
 `users.txt`	id, name, email, password, role
+---
 `products.txt`	id, name, category, price, stock, imageUrl, description, expiryDate
+---
 `cart.txt`	cartId, userId, productId, quantity
+---
 `orders.txt`	orderId, userId, name, total, paymentMethod, address, phone, status, deliveryId
+---
 `order_items.txt`	orderItemId, orderId, productId, quantity, price
+---
 `payments.txt`	paymentId, orderId, method, amount, status
+---
 `inventory.txt`	inventoryId, productId, productName, stock, supplier, status
+---
 `reviews.txt`	reviewId, productName, userName, rating, comment
+---
 `notifications.txt`	notificationId, recipient, title, message, timestamp, read/unread
 ---
 🧩 Architecture
@@ -108,9 +117,13 @@ This project follows a 3-Layer MVC Architecture:
 View (JSP)  ←→  Controller (Servlet)  ←→  DAO (File I/O)  ←→  Model (POJO)
 ```
 Model: Plain Java objects with `toFileString()` serialization
+---
 DAO: Reads/writes flat `.txt` files; no external database
+---
 Servlet: Handles HTTP requests, business logic, session management, redirects
+---
 View: JSP pages that render data passed via request/session attributes
+---
 OOP Concepts Used
 Concept	Where
 Inheritance	`Admin extends User`, `Customer extends User`
@@ -120,12 +133,19 @@ Abstraction	DAO pattern abstracts file storage from servlets
 ---
 📋 Modules
 User Management — Registration, Login, Role-based access, Session management
+---
 Product Management — CRUD operations on grocery products
+---
 Cart Module — Add to cart, update quantity, remove items
+---
 Order Management — Checkout, order lifecycle (Confirmed → Prepared → Picked Up → Delivered)
+---
 Payment Module — COD and Card payments; auto-status update on delivery
+---
 Inventory Management — Stock tracking, restock requests, supplier management
+---
 Review & Rating System — Product reviews with star ratings
+---
 Notification System — Role-based notifications with read/unread tracking
 ---
 🤝 Contributing
