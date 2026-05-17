@@ -7,6 +7,7 @@ public class Order {
     private int quantity;
     private double total;
 
+    // constructor
     public Order(String orderId, String userId, String productName, int quantity, double total) {
         this.orderId = orderId;
         this.userId = userId;
