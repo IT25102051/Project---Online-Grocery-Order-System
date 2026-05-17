@@ -1,0 +1,12 @@
+package com.grocery.model;
+
+public class Customer extends User {
+    public Customer(String userId, String name, String email, String password) {
+        super(userId, name, email, password, "Customer");
+    }
+
+    @Override
+    public String getDashboardAccess() {
+        return "Customer Dashboard Access";
+    }
+}
