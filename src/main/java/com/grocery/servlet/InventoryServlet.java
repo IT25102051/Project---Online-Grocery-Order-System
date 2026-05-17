@@ -18,8 +18,10 @@ public class InventoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null || !"Admin".equalsIgnoreCase((String) session.getAttribute("role"))) {
-            response.sendRedirect("adminLogin.jsp");
+        String userRole = (session != null) ? (String) session.getAttribute("role") : null;
+
+        if (userRole == null || (!"Admin".equalsIgnoreCase(userRole) && !"Delivery".equalsIgnoreCase(userRole))) {
+            response.sendRedirect("login.jsp");
             return;
         }
 
@@ -44,32 +46,78 @@ public class InventoryServlet extends HttpServlet {
 
             try {
                 List<String> products = productDao.getAllProducts();
-                List<String> updatedProducts = new java.util.ArrayList<>();
                 for (String line : products) {
                     String[] parts = line.split(",", -1);
-                    if (parts.length >= 5 && parts[0].trim().equals(productId)) {
+                    if (parts.length >= 2 && parts[0].trim().equals(productId)) {
                         productName = parts[1].trim();
-                        int currentStock = Integer.parseInt(parts[4].trim());
-                        parts[4] = String.valueOf(currentStock + addedStock);
-                        updatedProducts.add(String.join(",", parts));
-                    } else {
-                        updatedProducts.add(line);
-                    }
-                }
-
-                try (java.io.FileWriter pfw = new java.io.FileWriter(new java.io.File(basePath + "data/products.txt"), false)) {
-                    for (String pLine : updatedProducts) {
-                        pfw.write(pLine + "\n");
+                        break;
                     }
                 }
             } catch (Exception e) {}
 
-            Inventory inventory = new Inventory(inventoryId, productName, addedStock, supplier);
+            Inventory inventory = new Inventory(inventoryId, productId, productName, addedStock, supplier, "Pending");
             dao.addInventory(inventory);
 
             String id = UUID.randomUUID().toString().substring(0, 8);
-            notificationDao.addNotification(new Notification(id, "Admin", "Stock Restocked: " + productName,
-                    "Added " + addedStock + " units to " + productName + ".", new java.util.Date().toString(), false));
+            notificationDao.addNotification(new Notification(id, "Delivery", "New Inventory Request",
+                    "Admin requested " + addedStock + " units of " + productName + " from " + supplier + ".", new java.util.Date().toString(), false));
+
+        } else if ("updateStatus".equals(action)) {
+            String invId = request.getParameter("inventoryId");
+            String newStatus = request.getParameter("status");
+            String basePath = getServletContext().getRealPath("/");
+
+            try {
+                List<String> records = dao.getAllInventory();
+                List<String> updatedRecords = new java.util.ArrayList<>();
+                Inventory target = null;
+
+                for (String line : records) {
+                    String[] parts = line.split(",", -1);
+                    if (parts.length >= 6 && parts[0].trim().equals(invId)) {
+                        parts[5] = newStatus;
+                        target = new Inventory(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), parts[4], parts[5]);
+                        updatedRecords.add(String.join(",", parts));
+                    } else {
+                        updatedRecords.add(line);
+                    }
+                }
+
+                // Save updated inventory records
+                try (java.io.FileWriter fw = new java.io.FileWriter(basePath + "data/inventory.txt", false)) {
+                    for (String r : updatedRecords) fw.write(r + "\n");
+                }
+
+                // If Completed, update products.txt
+                if ("Completed".equalsIgnoreCase(newStatus) && target != null) {
+                    String pId = target.getProductId();
+                    int amount = target.getStock();
+                    List<String> pLines = new java.util.ArrayList<>();
+                    try (java.io.BufferedReader pbr = new java.io.BufferedReader(new java.io.FileReader(basePath + "data/products.txt"))) {
+                        String pline;
+                        while ((pline = pbr.readLine()) != null) {
+                            String[] pParts = pline.split(",", -1);
+                            if (pParts.length >= 5 && pParts[0].trim().equals(pId)) {
+                                int current = Integer.parseInt(pParts[4].trim());
+                                pParts[4] = String.valueOf(current + amount);
+                                pLines.add(String.join(",", pParts));
+                            } else {
+                                pLines.add(pline);
+                            }
+                        }
+                    }
+                    try (java.io.FileWriter pfw = new java.io.FileWriter(basePath + "data/products.txt", false)) {
+                        for (String pl : pLines) pfw.write(pl + "\n");
+                    }
+                }
+
+                // Notifications
+                String nid = UUID.randomUUID().toString().substring(0, 8);
+                String role = "Restocked".equals(newStatus) ? "Delivery" : "Admin";
+                String msg = "Inventory " + invId + " status updated to: " + newStatus;
+                notificationDao.addNotification(new Notification(nid, role, "Inventory Update", msg, new java.util.Date().toString(), false));
+
+            } catch (Exception e) { e.printStackTrace(); }
         }
 
         if ("delete".equals(action)) {
@@ -81,6 +129,10 @@ public class InventoryServlet extends HttpServlet {
             notificationDao.addNotification(new Notification(id, "Delivery", title, message, timestamp, false));
         }
 
-        response.sendRedirect("inventory.jsp");
+        if ("Delivery".equalsIgnoreCase(userRole)) {
+            response.sendRedirect("deliveryDashboard.jsp");
+        } else {
+            response.sendRedirect("inventory.jsp");
+        }
     }
 }
