@@ -5,15 +5,51 @@ import java.io.*;
 import java.util.*;
 
 public class ReviewDAO {
-    private final String FILE_PATH = "data/reviews.txt";
+    private final String filePath;
+
+    public ReviewDAO(String appRealPath) {
+        this.filePath = appRealPath + "data/reviews.txt";
+    }
+
+    public ReviewDAO() {
+        this.filePath = "data/reviews.txt";
+    }
 
     public void addReview(Review review) throws IOException {
-        File file = new File(FILE_PATH);
+        File file = new File(filePath);
         file.getParentFile().mkdirs();
 
-        FileWriter fw = new FileWriter(file, true);
-        fw.write(review.toFileString() + "\n");
-        fw.close();
+        try (FileWriter fw = new FileWriter(file, true)) {
+            fw.write(review.toFileString() + "\n");
+        }
+    }
+
+    public List<Review> getAllReviewObjects() throws IOException {
+        List<Review> reviews = new ArrayList<>();
+        List<String> lines = readFile();
+        for (String line : lines) {
+            String[] parts = line.split(",", 5);
+            if (parts.length >= 5) {
+                reviews.add(new Review(
+                        parts[0].trim(),
+                        parts[1].trim(),
+                        parts[2].trim(),
+                        Integer.parseInt(parts[3].trim()),
+                        parts[4].trim()
+                ));
+            }
+        }
+        return reviews;
+    }
+
+    public Review getReviewById(String id) throws IOException {
+        List<Review> reviews = getAllReviewObjects();
+        for (Review r : reviews) {
+            if (r.getReviewId().equals(id)) {
+                return r;
+            }
+        }
+        return null;
     }
 
     public List<String> getAllReviews() throws IOException {
@@ -29,28 +65,33 @@ public class ReviewDAO {
 
     private List<String> readFile() throws IOException {
         List<String> lines = new ArrayList<>();
-        File file = new File(FILE_PATH);
+        File file = new File(filePath);
 
         if (!file.exists()) return lines;
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-
-        while ((line = br.readLine()) != null) {
-            lines.add(line);
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String trimmed = line.trim();
+                if (!trimmed.isEmpty()) {
+                    lines.add(trimmed);
+                }
+            }
         }
 
-        br.close();
         return lines;
     }
 
     private void writeFile(List<String> lines) throws IOException {
-        FileWriter fw = new FileWriter(FILE_PATH, false);
-
-        for (String line : lines) {
-            fw.write(line + "\n");
+        File file = new File(filePath);
+        if (file.getParentFile() != null) {
+            file.getParentFile().mkdirs();
         }
 
-        fw.close();
+        try (FileWriter fw = new FileWriter(file, false)) {
+            for (String line : lines) {
+                fw.write(line + "\n");
+            }
+        }
     }
 }
