@@ -94,88 +94,88 @@
 
     <div class="card">
         <% if (order == null) { %>
-            <div class="empty-state">
-                <i class="fa-solid fa-triangle-exclamation" style="font-size: 32px;"></i>
-                <h2>Order not found</h2>
-                <p>The requested order could not be located. Please return to the order list.</p>
-            </div>
+        <div class="empty-state">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 32px;"></i>
+            <h2>Order not found</h2>
+            <p>The requested order could not be located. Please return to the order list.</p>
+        </div>
         <% } else {
             String orderStatus = order.length > 7 ? order[7] : "Confirmed";
             String deliveryId = order.length > 8 ? order[8] : "N/A";
         %>
-            <div class="section">
-                <div class="section-title">Summary</div>
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <span class="detail-label">Order ID</span>
-                        <span class="detail-value"><%= order[0] %></span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Customer</span>
-                        <span class="detail-value"><%= order.length > 2 ? order[2] : "—" %></span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Total Amount</span>
-                        <span class="detail-value">Rs. <%= order.length > 3 ? order[3] : "0.00" %></span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Payment Method</span>
-                        <span class="detail-value"><%= order.length > 4 ? order[4] : "—" %></span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Order Status</span>
-                        <span class="detail-value"><%= orderStatus %></span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Delivery ID</span>
-                        <span class="detail-value"><%= deliveryId %></span>
-                    </div>
+        <div class="section">
+            <div class="section-title">Summary</div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Order ID</span>
+                    <span class="detail-value"><%= order[0] %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Customer</span>
+                    <span class="detail-value"><%= order.length > 2 ? order[2] : "—" %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Total Amount</span>
+                    <span class="detail-value">Rs. <%= order.length > 3 ? order[3] : "0.00" %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Payment Method</span>
+                    <span class="detail-value"><%= order.length > 4 ? order[4] : "—" %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Order Status</span>
+                    <span class="detail-value"><%= orderStatus %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Delivery ID</span>
+                    <span class="detail-value"><%= deliveryId %></span>
                 </div>
             </div>
-            <div class="section">
-                <div class="section-title">Shipping & Contact</div>
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <span class="detail-label">Address</span>
-                        <span class="detail-value"><%= order.length > 5 ? order[5] : "—" %></span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Phone</span>
-                        <span class="detail-value"><%= order.length > 6 ? order[6] : "—" %></span>
-                    </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Shipping & Contact</div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Address</span>
+                    <span class="detail-value"><%= order.length > 5 ? order[5] : "—" %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Phone</span>
+                    <span class="detail-value"><%= order.length > 6 ? order[6] : "—" %></span>
                 </div>
             </div>
-            <div class="section">
-                <div class="section-title">Order Items</div>
-                <% if (items.isEmpty()) { %>
-                <div class="empty-state">
-                    <p>No line items were recorded for this order.</p>
-                </div>
-                <% } else { %>
-                <table class="items-table">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (String[] item : items) {
-                            String name = item[0];
-                            String quantity = item[1];
-                            String price = item[2];
-                        %>
-                        <tr>
-                            <td><%= name %></td>
-                            <td><%= quantity %></td>
-                            <td>Rs. <%= price %></td>
-                        </tr>
-                        <% } %>
-                    </tbody>
-                </table>
+        </div>
+        <div class="section">
+            <div class="section-title">Order Items</div>
+            <% if (items.isEmpty()) { %>
+            <div class="empty-state">
+                <p>No line items were recorded for this order.</p>
+            </div>
+            <% } else { %>
+            <table class="items-table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for (String[] item : items) {
+                    String name = item[0];
+                    String quantity = item[1];
+                    String price = item[2];
+                %>
+                <tr>
+                    <td><%= name %></td>
+                    <td><%= quantity %></td>
+                    <td>Rs. <%= price %></td>
+                </tr>
                 <% } %>
-            </div>
+                </tbody>
+            </table>
+            <% } %>
+        </div>
         <% } %>
     </div>
 </div>
