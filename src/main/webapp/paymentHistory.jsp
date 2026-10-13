@@ -102,6 +102,31 @@
     // Reverse so newest first
     Collections.reverse(userPayments);
     int totalPayments = userPayments.size();
+
+    // Count active unread notifications
+    boolean hasUnreadNotifications = false;
+    File notificationFile = new File(dataDir + "notifications.txt");
+    if (notificationFile.exists()) {
+        try (BufferedReader br = new BufferedReader(new FileReader(notificationFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
+                String[] raw = line.split(",", 6);
+                if (raw.length >= 6) {
+                    String recipient = raw[1].trim();
+                    String readFlag = raw[5].trim();
+                    boolean allowed = "All".equalsIgnoreCase(recipient)
+                            || recipient.equalsIgnoreCase(role)
+                            || recipient.equalsIgnoreCase(userId);
+                    if (allowed && !"read".equalsIgnoreCase(readFlag)) {
+                        hasUnreadNotifications = true;
+                        break;
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -481,10 +506,20 @@
     <div class="nav-links">
         <a href="customerDashboard.jsp">Dashboard</a>
         <a href="products.jsp">Products</a>
+        <a href="cart.jsp?userId=<%= userId %>">🛒 Cart</a>
         <a href="OrderHistoryServlet">Orders</a>
         <a href="paymentHistory.jsp" class="active">Payments</a>
+        <a href="notifications.jsp">
+            <i class="fa-solid fa-bell" style="position: relative;">
+                <% if (hasUnreadNotifications) { %>
+                    <span style="position: absolute; top: -3px; right: -3px; display: block; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; border: 1px solid white;"></span>
+                <% } %>
+            </i> Notifications
+        </a>
         <a href="LogoutServlet" class="logout">Logout</a>
-        <div class="avatar"><%= username != null ? username.substring(0,1).toUpperCase() : "C" %></div>
+        <a href="profile.jsp" class="avatar-link" title="My Profile" style="text-decoration: none;">
+            <div class="avatar" style="cursor: pointer; transition: transform 0.2s ease;"><%= username != null ? username.substring(0,1).toUpperCase() : "C" %></div>
+        </a>
     </div>
 </div>
 
@@ -541,70 +576,70 @@
         <div class="table-wrap">
             <table>
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Payment ID</th>
-                    <th>Order ID</th>
-                    <th>Method</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Payment ID</th>
+                        <th>Order ID</th>
+                        <th>Method</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <%
-                    int idx = 1;
-                    for (Map<String, String> pay : userPayments) {
-                        String payId = pay.get("paymentId");
-                        String ordId = pay.get("orderId");
-                        String method = pay.get("method");
-                        String amountStr = pay.get("amount");
-                        String payStatus = pay.get("status");
+                    <%
+                        int idx = 1;
+                        for (Map<String, String> pay : userPayments) {
+                            String payId = pay.get("paymentId");
+                            String ordId = pay.get("orderId");
+                            String method = pay.get("method");
+                            String amountStr = pay.get("amount");
+                            String payStatus = pay.get("status");
 
-                        // Format amount
-                        String displayAmount = amountStr;
-                        try {
-                            displayAmount = "Rs. " + String.format("%.2f", Double.parseDouble(amountStr));
-                        } catch (Exception ignored) {}
+                            // Format amount
+                            String displayAmount = amountStr;
+                            try {
+                                displayAmount = "Rs. " + String.format("%.2f", Double.parseDouble(amountStr));
+                            } catch (Exception ignored) {}
 
-                        // Determine method badge class
-                        String methodLower = method.toLowerCase();
-                        String methodClass = "method-card";
-                        String methodIcon = "💳";
-                        if (methodLower.contains("cash") || methodLower.contains("cod")) {
-                            methodClass = "method-cod";
-                            methodIcon = "💵";
-                        } else if (methodLower.contains("debit")) {
-                            methodClass = "method-debit";
-                            methodIcon = "🏦";
-                        }
+                            // Determine method badge class
+                            String methodLower = method.toLowerCase();
+                            String methodClass = "method-card";
+                            String methodIcon = "💳";
+                            if (methodLower.contains("cash") || methodLower.contains("cod")) {
+                                methodClass = "method-cod";
+                                methodIcon = "💵";
+                            } else if (methodLower.contains("debit")) {
+                                methodClass = "method-debit";
+                                methodIcon = "🏦";
+                            }
 
-                        // Status
-                        boolean isCompleted = "Completed".equalsIgnoreCase(payStatus) || "Success".equalsIgnoreCase(payStatus);
-                        String statusClass = isCompleted ? "status-completed" : "status-pending";
-                        String statusLabel = isCompleted ? "Completed" : "Pending";
+                            // Status
+                            boolean isCompleted = "Completed".equalsIgnoreCase(payStatus) || "Success".equalsIgnoreCase(payStatus);
+                            String statusClass = isCompleted ? "status-completed" : "status-pending";
+                            String statusLabel = isCompleted ? "Completed" : "Pending";
 
-                        // Shorten IDs for display
-                        String shortPayId = payId.length() > 16 ? payId.substring(0, 16) + "…" : payId;
-                        String shortOrdId = ordId.length() > 16 ? ordId.substring(0, 16) + "…" : ordId;
-                %>
-                <tr>
-                    <td><%= idx++ %></td>
-                    <td><span class="pay-id" title="<%= payId %>"><%= shortPayId %></span></td>
-                    <td><span class="order-id" title="<%= ordId %>"><%= shortOrdId %></span></td>
-                    <td>
+                            // Shorten IDs for display
+                            String shortPayId = payId.length() > 16 ? payId.substring(0, 16) + "…" : payId;
+                            String shortOrdId = ordId.length() > 16 ? ordId.substring(0, 16) + "…" : ordId;
+                    %>
+                    <tr>
+                        <td><%= idx++ %></td>
+                        <td><span class="pay-id" title="<%= payId %>"><%= shortPayId %></span></td>
+                        <td><span class="order-id" title="<%= ordId %>"><%= shortOrdId %></span></td>
+                        <td>
                             <span class="method-badge <%= methodClass %>">
                                 <%= methodIcon %> <%= method %>
                             </span>
-                    </td>
-                    <td><span class="amount"><%= displayAmount %></span></td>
-                    <td>
+                        </td>
+                        <td><span class="amount"><%= displayAmount %></span></td>
+                        <td>
                             <span class="status-badge <%= statusClass %>">
                                 <span class="status-dot"></span>
                                 <%= statusLabel %>
                             </span>
-                    </td>
-                </tr>
-                <% } %>
+                        </td>
+                    </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>

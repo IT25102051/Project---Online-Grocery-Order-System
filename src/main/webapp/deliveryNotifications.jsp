@@ -630,13 +630,13 @@
             </svg>
             Back to Dashboard
         </a>
-        <div class="user-badge">
+        <a href="profile.jsp" class="user-badge" style="text-decoration: none; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.06)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.04)';">
             <div class="user-avatar"><%= username != null ? username.substring(0, 1).toUpperCase() : "D" %></div>
             <div class="user-info">
                 <strong><%= username != null ? username : "Delivery Staff" %></strong>
                 <span>Delivery Team</span>
             </div>
-        </div>
+        </a>
     </nav>
 
     <!-- PAGE HEADER -->

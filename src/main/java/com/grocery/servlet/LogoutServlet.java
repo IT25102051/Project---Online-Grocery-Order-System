@@ -1,17 +1,9 @@
 package com.grocery.servlet;
 
-
-import java.io.IOException;
-
-public class LogoutServlet  {
-
-}
-package com.grocery.servlet;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-        import java.io.IOException;
+import java.io.IOException;
 
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {

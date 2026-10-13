@@ -1,0 +1,2 @@
+A001,Super Admin,admin@freshcart.com,admin123,superadmin
+A002,Store Manager,manager@freshcart.com,pass123,admin

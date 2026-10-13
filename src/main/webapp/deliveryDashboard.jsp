@@ -127,290 +127,293 @@
     </style>
 </head>
 <body>
-<div class="dashboard-container">
-    <header class="dashboard-head">
-        <div>
-            <div class="eyebrow">Delivery Operations</div>
-            <h1>Delivery Dashboard</h1>
-            <p>Welcome back, <strong><%= username != null ? username : "Delivery Team" %></strong>. This dashboard shows only admin-assigned delivery alerts and orders ready for pickup.</p>
-        </div>
-        <div class="action-buttons">
-            <a href="deliveryNotifications.jsp" class="notif-icon-btn" title="Notification Center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                </svg>
-                <% if (unreadDeliveryCount > 0) { %>
-                <span class="notif-badge"><%= unreadDeliveryCount %></span>
-                <% } %>
-            </a>
-            <a href="LogoutServlet" class="btn btn-primary">Logout</a>
-        </div>
-    </header>
-
-    <% if (request.getParameter("picked") != null) { %>
-    <div class="panel" style="margin-bottom:24px; border-left:4px solid #16a34a;">
-        <strong>Success</strong>
-        <p>Order pickup updated successfully. The admin has been notified.</p>
-    </div>
-    <% } %>
-    <% if (request.getParameter("delivered") != null) { %>
-    <div class="panel" style="margin-bottom:24px; border-left:4px solid #16a34a;">
-        <strong>Delivery Complete</strong>
-        <p>Order has been marked as delivered. The admin has been notified about the payment collection.</p>
-    </div>
-    <% } %>
-
-    <div class="stat-grid">
-        <div class="stat-card">
-            <span>Total Ready Orders</span>
-            <h2><%= totalReadyOrders %></h2>
-            <p>Orders prepared and awaiting pickup.</p>
-        </div>
-        <div class="stat-card">
-            <span>Delivery Alerts</span>
-            <h2><%= totalDeliveryAlerts %></h2>
-            <p>Admin-selected alerts sent to delivery staff.</p>
-        </div>
-        <div class="stat-card">
-            <span>Unread Alerts</span>
-            <h2><%= unreadDeliveryCount %></h2>
-            <p>Delivery notifications still unread.</p>
-        </div>
-    </div>
-
-    <div class="section-grid">
-        <div class="panel">
-            <div class="panel-title">Pickup Queue</div>
-            <div class="panel-description"> orders ready for collection and delivery.</div>
-            <% if (preparedOrders.isEmpty()) { %>
-            <div class="empty-state">
-                <h4>No orders ready yet</h4>
-                <p>The admin will assign orders here once they are prepared for pickup.</p>
+    <div class="dashboard-container">
+        <header class="dashboard-head">
+            <div>
+                <div class="eyebrow">Delivery Operations</div>
+                <h1>Delivery Dashboard</h1>
+                <p>Welcome back, <strong><%= username != null ? username : "Delivery Team" %></strong>. This dashboard shows only admin-assigned delivery alerts and orders ready for pickup.</p>
             </div>
-            <% } else { %>
-            <table class="order-table">
-                <thead>
-                <tr>
-                    <th>Order</th>
-                    <th>Customer</th>
-                    <th>Total</th>
-                    <th>Payment</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% for (String[] order : preparedOrders) {
-                    String orderId = order.length > 0 ? order[0] : "—";
-                    String customer = order.length > 2 ? order[2] : "—";
-                    String total = order.length > 3 ? order[3] : "0";
-                    String payment = order.length > 4 ? order[4] : "—";
-                    String address = order.length > 5 ? order[5] : "—";
-                    String displayAmount = total;
-                    try { displayAmount = "Rs. " + String.format("%.2f", Double.parseDouble(total)); } catch (Exception ignored) {}
-                %>
-                <tr>
-                    <td>
-                        <strong><%= orderId %></strong>
-                        <div style="font-size:12px; color:#64748b; margin-top:6px; max-width:180px;">
-                            <%= String.join(", ", orderItemsMap.getOrDefault(orderId, Collections.emptyList())) %>
-                        </div>
-                    </td>
-                    <td><%= customer %></td>
-                    <td><%= displayAmount %></td>
-                    <td><%= payment %></td>
-                    <td><%= address %></td>
-                    <td>
-                        <form action="OrderServlet" method="post">
-                            <input type="hidden" name="action" value="pickup">
-                            <input type="hidden" name="orderId" value="<%= orderId %>">
-                            <button type="submit" class="btn btn-primary" style="padding:10px 18px;"><i class="fa-solid fa-truck"></i> Pickup</button>
-                        </form>
-                    </td>
-                </tr>
-                <% } %>
-                </tbody>
-            </table>
-            <% } %>
+            <div class="action-buttons" style="display: flex; align-items: center; gap: 12px;">
+                <a href="deliveryNotifications.jsp" class="notif-icon-btn" title="Notification Center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                    </svg>
+                    <% if (unreadDeliveryCount > 0) { %>
+                    <span class="notif-badge"><%= unreadDeliveryCount %></span>
+                    <% } %>
+                </a>
+                <a href="profile.jsp" class="notif-icon-btn" title="My Profile" style="color: #334155; font-size: 20px;">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="LogoutServlet" class="btn btn-primary">Logout</a>
+            </div>
+        </header>
 
-            <% if (!pickedUpOrders.isEmpty()) { %>
-            <div class="panel-title" style="margin-top:28px;">Active Deliveries</div>
-            <div class="panel-description">Orders you have picked up — mark as delivered when done.</div>
-            <table class="order-table">
-                <thead>
-                <tr>
-                    <th>Order</th>
-                    <th>Customer</th>
-                    <th>Total</th>
-                    <th>Payment</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% for (String[] order : pickedUpOrders) {
-                    String pOrderId = order.length > 0 ? order[0] : "—";
-                    String pCustomer = order.length > 2 ? order[2] : "—";
-                    String pTotal = order.length > 3 ? order[3] : "0";
-                    String pPayment = order.length > 4 ? order[4] : "—";
-                    String pAddress = order.length > 5 ? order[5] : "—";
-                    String pDisplayAmount = pTotal;
-                    try { pDisplayAmount = "Rs. " + String.format("%.2f", Double.parseDouble(pTotal)); } catch (Exception ignored) {}
-                    boolean isCOD = "Cash on Delivery".equalsIgnoreCase(pPayment);
-                %>
-                <tr>
-                    <td>
-                        <strong><%= pOrderId %></strong>
-                        <div style="font-size:12px; color:#64748b; margin-top:6px; max-width:180px;">
-                            <%= String.join(", ", orderItemsMap.getOrDefault(pOrderId, Collections.emptyList())) %>
-                        </div>
-                    </td>
-                    <td><%= pCustomer %></td>
-                    <td><%= pDisplayAmount %></td>
-                    <td><%= pPayment %><%= isCOD ? " 💵" : "" %></td>
-                    <td><%= pAddress %></td>
-                    <td style="display:flex; gap:8px;">
-                        <form action="OrderServlet" method="post" style="margin:0;">
-                            <input type="hidden" name="action" value="deliver">
-                            <input type="hidden" name="orderId" value="<%= pOrderId %>">
-                            <button type="submit" class="btn btn-primary" style="padding:10px 14px; background:#2563eb; font-size:13px;" title="Delivered"><i class="fa-solid fa-check-circle"></i></button>
-                        </form>
-                        <form action="OrderServlet" method="post" style="margin:0;">
-                            <input type="hidden" name="action" value="not_delivered">
-                            <input type="hidden" name="orderId" value="<%= pOrderId %>">
-                            <button type="submit" class="btn btn-primary" style="padding:10px 14px; background:#ef4444; font-size:13px;" title="Not Delivered"><i class="fa-solid fa-times-circle"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <% } %>
-                </tbody>
-            </table>
-            <% } %>
+        <% if (request.getParameter("picked") != null) { %>
+        <div class="panel" style="margin-bottom:24px; border-left:4px solid #16a34a;">
+            <strong>Success</strong>
+            <p>Order pickup updated successfully. The admin has been notified.</p>
+        </div>
+        <% } %>
+        <% if (request.getParameter("delivered") != null) { %>
+        <div class="panel" style="margin-bottom:24px; border-left:4px solid #16a34a;">
+            <strong>Delivery Complete</strong>
+            <p>Order has been marked as delivered. The admin has been notified about the payment collection.</p>
+        </div>
+        <% } %>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span>Total Ready Orders</span>
+                <h2><%= totalReadyOrders %></h2>
+                <p>Orders prepared and awaiting pickup.</p>
+            </div>
+            <div class="stat-card">
+                <span>Delivery Alerts</span>
+                <h2><%= totalDeliveryAlerts %></h2>
+                <p>Admin-selected alerts sent to delivery staff.</p>
+            </div>
+            <div class="stat-card">
+                <span>Unread Alerts</span>
+                <h2><%= unreadDeliveryCount %></h2>
+                <p>Delivery notifications still unread.</p>
+            </div>
         </div>
 
-        <div class="panel" style="margin-bottom:24px;">
-            <div class="panel-title" style="color:#2563eb;"><i class="fa-solid fa-truck-ramp-box"></i> Active Supply Requests</div>
-            <div class="panel-description">Assigned inventory tasks from Admin.</div>
-            <div class="notification-list">
-                <%
-                    List<String[]> activeRequests = new ArrayList<>();
-                    File iFile = new File(dataDir + "inventory.txt");
-                    if (iFile.exists()) {
-                        try (BufferedReader ibr = new BufferedReader(new FileReader(iFile))) {
-                            String iline;
-                            while ((iline = ibr.readLine()) != null) {
-                                iline = iline.trim();
-                                if (iline.isEmpty()) continue;
-                                String[] iparts = iline.split(",", -1);
+        <div class="section-grid">
+            <div class="panel">
+                <div class="panel-title">Pickup Queue</div>
+                <div class="panel-description"> orders ready for collection and delivery.</div>
+                <% if (preparedOrders.isEmpty()) { %>
+                <div class="empty-state">
+                    <h4>No orders ready yet</h4>
+                    <p>The admin will assign orders here once they are prepared for pickup.</p>
+                </div>
+                <% } else { %>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Payment</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (String[] order : preparedOrders) {
+                            String orderId = order.length > 0 ? order[0] : "—";
+                            String customer = order.length > 2 ? order[2] : "—";
+                            String total = order.length > 3 ? order[3] : "0";
+                            String payment = order.length > 4 ? order[4] : "—";
+                            String address = order.length > 5 ? order[5] : "—";
+                            String displayAmount = total;
+                            try { displayAmount = "Rs. " + String.format("%.2f", Double.parseDouble(total)); } catch (Exception ignored) {}
+                        %>
+                        <tr>
+                            <td>
+                                <strong><%= orderId %></strong>
+                                <div style="font-size:12px; color:#64748b; margin-top:6px; max-width:180px;">
+                                    <%= String.join(", ", orderItemsMap.getOrDefault(orderId, Collections.emptyList())) %>
+                                </div>
+                            </td>
+                            <td><%= customer %></td>
+                            <td><%= displayAmount %></td>
+                            <td><%= payment %></td>
+                            <td><%= address %></td>
+                            <td>
+                                <form action="OrderServlet" method="post">
+                                    <input type="hidden" name="action" value="pickup">
+                                    <input type="hidden" name="orderId" value="<%= orderId %>">
+                                    <button type="submit" class="btn btn-primary" style="padding:10px 18px;"><i class="fa-solid fa-truck"></i> Pickup</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } %>
 
-                                String invId = "";
-                                String pName = "";
-                                String qty = "0";
-                                String supplier = "";
-                                String status = "Requested";
+                <% if (!pickedUpOrders.isEmpty()) { %>
+                <div class="panel-title" style="margin-top:28px;">Active Deliveries</div>
+                <div class="panel-description">Orders you have picked up — mark as delivered when done.</div>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Payment</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (String[] order : pickedUpOrders) {
+                            String pOrderId = order.length > 0 ? order[0] : "—";
+                            String pCustomer = order.length > 2 ? order[2] : "—";
+                            String pTotal = order.length > 3 ? order[3] : "0";
+                            String pPayment = order.length > 4 ? order[4] : "—";
+                            String pAddress = order.length > 5 ? order[5] : "—";
+                            String pDisplayAmount = pTotal;
+                            try { pDisplayAmount = "Rs. " + String.format("%.2f", Double.parseDouble(pTotal)); } catch (Exception ignored) {}
+                            boolean isCOD = "Cash on Delivery".equalsIgnoreCase(pPayment);
+                        %>
+                        <tr>
+                            <td>
+                                <strong><%= pOrderId %></strong>
+                                <div style="font-size:12px; color:#64748b; margin-top:6px; max-width:180px;">
+                                    <%= String.join(", ", orderItemsMap.getOrDefault(pOrderId, Collections.emptyList())) %>
+                                </div>
+                            </td>
+                            <td><%= pCustomer %></td>
+                            <td><%= pDisplayAmount %></td>
+                            <td><%= pPayment %><%= isCOD ? " 💵" : "" %></td>
+                            <td><%= pAddress %></td>
+                            <td style="display:flex; gap:8px;">
+                                <form action="OrderServlet" method="post" style="margin:0;">
+                                    <input type="hidden" name="action" value="deliver">
+                                    <input type="hidden" name="orderId" value="<%= pOrderId %>">
+                                    <button type="submit" class="btn btn-primary" style="padding:10px 14px; background:#2563eb; font-size:13px;" title="Delivered"><i class="fa-solid fa-check-circle"></i></button>
+                                </form>
+                                <form action="OrderServlet" method="post" style="margin:0;">
+                                    <input type="hidden" name="action" value="not_delivered">
+                                    <input type="hidden" name="orderId" value="<%= pOrderId %>">
+                                    <button type="submit" class="btn btn-primary" style="padding:10px 14px; background:#ef4444; font-size:13px;" title="Not Delivered"><i class="fa-solid fa-times-circle"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } %>
+            </div>
 
-                                if (iparts.length >= 6) {
-                                    invId = iparts[0].trim();
-                                    pName = iparts[2].trim();
-                                    qty = iparts[3].trim();
-                                    supplier = iparts[4].trim();
-                                    status = iparts[5].trim();
-                                } else if (iparts.length >= 4) {
-                                    invId = iparts[0].trim();
-                                    pName = iparts[1].trim();
-                                    qty = iparts[2].trim();
-                                    supplier = iparts[3].trim();
-                                }
-
-                                if (username.equalsIgnoreCase(supplier) && ("Pending".equals(status) || "Approved".equals(status))) {
-                                    activeRequests.add(new String[]{invId, "", pName, qty, supplier, status});
+            <div class="panel" style="margin-bottom:24px;">
+                <div class="panel-title" style="color:#2563eb;"><i class="fa-solid fa-truck-ramp-box"></i> Active Supply Requests</div>
+                <div class="panel-description">Assigned inventory tasks from Admin.</div>
+                <div class="notification-list">
+                    <%
+                        List<String[]> activeRequests = new ArrayList<>();
+                        File iFile = new File(dataDir + "inventory.txt");
+                        if (iFile.exists()) {
+                            try (BufferedReader ibr = new BufferedReader(new FileReader(iFile))) {
+                                String iline;
+                                while ((iline = ibr.readLine()) != null) {
+                                    iline = iline.trim();
+                                    if (iline.isEmpty()) continue;
+                                    String[] iparts = iline.split(",", -1);
+                                    
+                                    String invId = "";
+                                    String pName = "";
+                                    String qty = "0";
+                                    String supplier = "";
+                                    String status = "Requested";
+                                    
+                                    if (iparts.length >= 6) {
+                                        invId = iparts[0].trim();
+                                        pName = iparts[2].trim();
+                                        qty = iparts[3].trim();
+                                        supplier = iparts[4].trim();
+                                        status = iparts[5].trim();
+                                    } else if (iparts.length >= 4) {
+                                        invId = iparts[0].trim();
+                                        pName = iparts[1].trim();
+                                        qty = iparts[2].trim();
+                                        supplier = iparts[3].trim();
+                                    }
+                                    
+                                    if (username.equalsIgnoreCase(supplier) && ("Pending".equals(status) || "Approved".equals(status))) {
+                                        activeRequests.add(new String[]{invId, "", pName, qty, supplier, status});
+                                    }
                                 }
                             }
                         }
-                    }
-                    if (activeRequests.isEmpty()) {
-                %>
-                <div class="empty-state" style="border-color:#16a34a; background:#f0fdf4;">
-                    <h4 style="color:#166534;">No Active Requests</h4>
-                    <p>You have no pending supply tasks.</p>
-                </div>
-                <% } else {
-                    for (String[] req : activeRequests) {
-                        String invId = req[0];
-                        String pName = req[2];
-                        String qty = req[3];
-                        String status = req[5];
-                %>
-                <div class="notification-card" style="border-left:4px solid #3b82f6; display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <strong><%= pName %></strong>
-                        <p>Quantity: <strong><%= qty %> units</strong></p>
-                        <div class="meta">Status: <span style="font-weight:700; color:#2563eb;"><%= "Approved".equals(status) ? "Stock Available" : status %></span></div>
+                        if (activeRequests.isEmpty()) {
+                    %>
+                    <div class="empty-state" style="border-color:#16a34a; background:#f0fdf4;">
+                        <h4 style="color:#166534;">No Active Requests</h4>
+                        <p>You have no pending supply tasks.</p>
                     </div>
-                    <div style="display:flex; gap:8px;">
-                        <% if ("Pending".equals(status)) { %>
-                        <form action="InventoryServlet" method="post" style="margin:0;">
-                            <input type="hidden" name="action" value="updateStatus">
-                            <input type="hidden" name="inventoryId" value="<%= invId %>">
-                            <input type="hidden" name="status" value="Approved">
-                            <button type="submit" class="btn btn-primary" style="padding:8px 12px; font-size:12px; background:#f59e0b;" title="Accept and Approve Request">
-                                <i class="fa-solid fa-thumbs-up"></i> Accept & Approve
-                            </button>
-                        </form>
-                        <% } else if ("Approved".equals(status)) { %>
-                        <form action="InventoryServlet" method="post" style="margin:0;">
-                            <input type="hidden" name="action" value="updateStatus">
-                            <input type="hidden" name="inventoryId" value="<%= invId %>">
-                            <input type="hidden" name="status" value="Delivered">
-                            <button type="submit" class="btn btn-primary" style="padding:8px 12px; font-size:12px; background:#16a34a;" title="Mark as Delivered">
-                                <i class="fa-solid fa-truck-ramp-box"></i> Mark Delivered
-                            </button>
+                    <% } else {
+                        for (String[] req : activeRequests) {
+                            String invId = req[0];
+                            String pName = req[2];
+                            String qty = req[3];
+                            String status = req[5];
+                    %>
+                    <div class="notification-card" style="border-left:4px solid #3b82f6; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <strong><%= pName %></strong>
+                            <p>Quantity: <strong><%= qty %> units</strong></p>
+                            <div class="meta">Status: <span style="font-weight:700; color:#2563eb;"><%= "Approved".equals(status) ? "Stock Available" : status %></span></div>
+                        </div>
+                        <div style="display:flex; gap:8px;">
+                            <% if ("Pending".equals(status)) { %>
+                            <form action="InventoryServlet" method="post" style="margin:0;">
+                                <input type="hidden" name="action" value="updateStatus">
+                                <input type="hidden" name="inventoryId" value="<%= invId %>">
+                                <input type="hidden" name="status" value="Approved">
+                                <button type="submit" class="btn btn-primary" style="padding:8px 12px; font-size:12px; background:#f59e0b;" title="Accept and Approve Request">
+                                    <i class="fa-solid fa-thumbs-up"></i> Accept & Approve
+                                </button>
+                            </form>
+                            <% } else if ("Approved".equals(status)) { %>
+                            <form action="InventoryServlet" method="post" style="margin:0;">
+                                <input type="hidden" name="action" value="updateStatus">
+                                <input type="hidden" name="inventoryId" value="<%= invId %>">
+                                <input type="hidden" name="status" value="Delivered">
+                                <button type="submit" class="btn btn-primary" style="padding:8px 12px; font-size:12px; background:#16a34a;" title="Mark as Delivered">
+                                    <i class="fa-solid fa-truck-ramp-box"></i> Mark Delivered
+                                </button>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } } %>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Admin Delivery Alerts</div>
+
+                <div class="panel-description">Only notifications selected for Delivery staff appear here.</div>
+                <% if (deliveryNotifications.isEmpty()) { %>
+                <div class="empty-state">
+                    <h4>No delivery alerts</h4>
+                    <p>Admin notifications will appear here once sent.</p>
+                </div>
+                <% } else { %>
+                <div class="notification-list">
+                    <% for (String[] note : deliveryNotifications) {
+                        String title = note.length > 2 ? note[2] : "Delivery update";
+                        String message = note.length > 3 ? note[3] : "";
+                        String time = note.length > 4 ? note[4] : "Unknown time";
+                        String status = note.length > 5 ? note[5] : "unread";
+                    %>
+                    <div class="notification-card" style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div>
+                            <strong><%= title %></strong>
+                            <p><%= message %></p>
+                            <div class="meta">Sent: <%= time %> · <span class="badge"><%= "read".equalsIgnoreCase(status) ? "Read" : "Unread" %></span></div>
+                        </div>
+                        <% if (!"read".equalsIgnoreCase(status)) {
+                            String nid = note.length > 0 ? note[0] : "";
+                        %>
+                        <form action="NotificationServlet" method="post" style="margin:0;">
+                            <input type="hidden" name="action" value="markRead">
+                            <input type="hidden" name="id" value="<%= nid %>">
+                            <button type="submit" class="btn btn-secondary" style="padding:8px 12px; font-size:12px;"><i class="fa-solid fa-check"></i> Mark Read</button>
                         </form>
                         <% } %>
                     </div>
-                </div>
-                <% } } %>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-title">Admin Delivery Alerts</div>
-
-            <div class="panel-description">Only notifications selected for Delivery staff appear here.</div>
-            <% if (deliveryNotifications.isEmpty()) { %>
-            <div class="empty-state">
-                <h4>No delivery alerts</h4>
-                <p>Admin notifications will appear here once sent.</p>
-            </div>
-            <% } else { %>
-            <div class="notification-list">
-                <% for (String[] note : deliveryNotifications) {
-                    String title = note.length > 2 ? note[2] : "Delivery update";
-                    String message = note.length > 3 ? note[3] : "";
-                    String time = note.length > 4 ? note[4] : "Unknown time";
-                    String status = note.length > 5 ? note[5] : "unread";
-                %>
-                <div class="notification-card" style="display:flex; justify-content:space-between; align-items:flex-start;">
-                    <div>
-                        <strong><%= title %></strong>
-                        <p><%= message %></p>
-                        <div class="meta">Sent: <%= time %> · <span class="badge"><%= "read".equalsIgnoreCase(status) ? "Read" : "Unread" %></span></div>
-                    </div>
-                    <% if (!"read".equalsIgnoreCase(status)) {
-                        String nid = note.length > 0 ? note[0] : "";
-                    %>
-                    <form action="NotificationServlet" method="post" style="margin:0;">
-                        <input type="hidden" name="action" value="markRead">
-                        <input type="hidden" name="id" value="<%= nid %>">
-                        <button type="submit" class="btn btn-secondary" style="padding:8px 12px; font-size:12px;"><i class="fa-solid fa-check"></i> Mark Read</button>
-                    </form>
                     <% } %>
                 </div>
                 <% } %>
             </div>
-            <% } %>
         </div>
     </div>
-</div>
 </body>
 </html>

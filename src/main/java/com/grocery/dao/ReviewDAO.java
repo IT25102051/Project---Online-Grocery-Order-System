@@ -31,11 +31,11 @@ public class ReviewDAO {
             String[] parts = line.split(",", 5);
             if (parts.length >= 5) {
                 reviews.add(new Review(
-                        parts[0].trim(),
-                        parts[1].trim(),
-                        parts[2].trim(),
-                        Integer.parseInt(parts[3].trim()),
-                        parts[4].trim()
+                    parts[0].trim(),
+                    parts[1].trim(),
+                    parts[2].trim(),
+                    Integer.parseInt(parts[3].trim()),
+                    parts[4].trim()
                 ));
             }
         }

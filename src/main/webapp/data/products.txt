@@ -1,0 +1,21 @@
+P001,Keeri Samba Rice (5kg),Rice & Grains,1000.0,49,https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800,Premium quality Keeri Samba,N/A
+P002,Nadu Rice (5kg),Rice & Grains,1050.00,50,https://objectstorage.ap-mumbai-1.oraclecloud.com/n/softlogicbicloud/b/cdn/o/products/600-600/113859--01--1644720573.jpeg,High quality Nadu Rice
+P003,Dilmah Premium Ceylon Tea (400g),Beverages,850.00,96,https://www.jungle.lk/wp-content/uploads/2019/02/Dilmah-Premium-Ceylon-Tea-BOPF-Loose-Black-Tea-400g.png,Finest Ceylon Black Tea
+P004,Highland Fresh Milk (1L),Dairy,450.00,38,https://milco.lk/wp-content/uploads/2025/02/highland-standardised-milk-01-1400w.jpg,Locally sourced fresh cow milk
+P005,Maggi Coconut Milk Powder (300g),Pantry,750.00,78,https://www.maggi.lk/sites/default/files/styles/product_image_tab_landscape_384_768/public/Maggi%20Coconut%20Milk%20Powder.png?itok=7cmhXhvJ,Convenient coconut milk powder
+P006,Sera Real Coconut Milk (400ml),Pantry,280.00,149,https://essstr.blob.core.windows.net/essimg/ItemAsset/Pic113974.jpg,Rich and creamy coconut milk
+P007,Fresh Coconuts (Pol),Produce,120.00,195,https://www-assets.liebherr.com/media/bu-media/lhbu-hau/global/freshmag/kokosnuss/coconut-nutrients-liebherr-story-169-600.webp,Freshly picked local coconuts
+P008,Red Onions (Rathu Lunu) 500g,Produce,450.00,93,https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=800,Fresh red onions
+P009,Big Onions (B-Onion) 1kg,Produce,380.00,153,https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?q=80&w=800,Large imported big onions
+P010,Green Chilies (Amu Miris) 250g,Produce,250.00,78,https://fricomart.com/wp-content/uploads/2024/05/amu-miris.jpg,Spicy green chilies
+P011,Wijaya Roasted Curry Powder (250g),Spices,420.00,120,https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=800,Traditional roasted curry powder
+P012,Wijaya Chilli Powder (250g),Spices,480.00,88,https://sandssrilankanspices.jp/wp-content/uploads/2025/01/chilli-powder.jpeg,Spicy and vibrant chilli powder
+P013,Motha Jelly Strawberry (100g),Desserts,150.00,99,https://www.lakfood.com/cdn/shop/products/Motha-Strawberry-Flavoured-Jelly-100g_1200x1200.jpg?v=1594937631,Delicious strawberry jelly dessert
+P014,Munchee Super Cream Cracker (500g),Snacks,650.00,85,https://objectstorage.ap-mumbai-1.oraclecloud.com/n/softlogicbicloud/b/cdn/o/products/600-600/114839--01--1623926509.jpeg,Crispy and fresh cream crackers
+P015,Elephant House Ginger Beer (1.5L),Beverages,380.00,120,https://static-01.daraz.lk/p/ebd8ce04c38a453f7e9e23a7337326b4.jpg,EGB - The classic ginger beer
+P016,Kotagala Kahata (200g),Beverages,420.00,74,https://www.ceylontstore.com/cdn/shop/products/th614_1200x1200.jpg?v=1561279840,Strong and rich black tea
+P017,Sustagen Vanilla (400g),Dairy,2450.00,45,https://essstr.blob.core.windows.net/essimg/ItemAsset/Pic546.jpg,Nutritional milk supplement
+P018,Maliban Gold Marie (300g),Snacks,350.00,109,https://malibangroup-2024.sgp1.digitaloceanspaces.com/theme/images-min/biscuit/sweet-range/BIG_gold_marie_top_banner_mobile_V1.jpg,Classic Marie biscuits
+P019,Dhal(Parippu)(1Kg),Rice & Grains,200.0,58,https://img.drz.lazcdn.com/static/lk/p/cbf709a95983ca35c87570d961761ae7.jpg_720x720q80.jpg,
+P020,Elephant House Pani kurumba 900ML,Desserts,790.0,22,https://i0.wp.com/onlinekade.lk/wp-content/uploads/Elephant-house-Pani-kurumba-900ML.webp,,2027-06-16
+P021,CIC Besto Omego 3 Egg Standard Pack 10S,Dairy,300.0,20,https://objectstorage.ap-mumbai-1.oraclecloud.com/n/softlogicbicloud/b/cdn/o/products/600-600/124094--01--1736954222.jpeg,,2026-07-08

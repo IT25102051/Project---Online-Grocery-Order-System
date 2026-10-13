@@ -153,9 +153,9 @@
                     if (row.length >= 6 && "Delivered".equals(row[5].trim())) arrivedCount++;
                 }
             %>
-            <button class="notif-btn <%= arrivedCount > 0 ? "btn-pulse" : "" %>"
+            <button class="notif-btn <%= arrivedCount > 0 ? "btn-pulse" : "" %>" 
                     onclick="<%= arrivedCount > 0 ? "document.querySelector('.btn-pulse').scrollIntoView({behavior: 'smooth'});" : "document.getElementById('stock-form-panel').scrollIntoView({behavior: 'smooth'}); document.getElementsByName('productId')[0].focus();" %>">
-                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-plus"></i> 
                 <%= arrivedCount > 0 ? "Pending Completion" : "Add Stock" %>
                 <% if (arrivedCount > 0) { %>
                 <span class="arrived-badge"><%= arrivedCount %></span>
@@ -285,7 +285,7 @@
                                         String qty = "0";
                                         String supplier = "";
                                         String status = "Pending";
-
+                                        
                                         if (row.length >= 6) {
                                             invId = row[0].trim();
                                             pName = row[2].trim();
@@ -298,7 +298,7 @@
                                             qty = row[2].trim();
                                             supplier = row[3].trim();
                                         }
-
+                                        
                                         String statusClass = "badge";
                                         if ("Pending".equals(status)) statusClass += " low";
                                         else if ("Approved".equals(status)) statusClass += " orange";

@@ -19,7 +19,7 @@ public class InventoryServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         String userRole = (session != null) ? (String) session.getAttribute("role") : null;
-
+        
         if (userRole == null || (!"Admin".equalsIgnoreCase(userRole) && !"Delivery".equalsIgnoreCase(userRole))) {
             response.sendRedirect("login.jsp");
             return;
@@ -35,7 +35,7 @@ public class InventoryServlet extends HttpServlet {
             try {
                 addedStock = Integer.parseInt(request.getParameter("stock"));
             } catch (Exception ignored) {}
-
+            
             String productId = request.getParameter("productId");
             String supplier = request.getParameter("supplier");
             String inventoryId = request.getParameter("inventoryId");
@@ -43,7 +43,7 @@ public class InventoryServlet extends HttpServlet {
             String basePath = getServletContext().getRealPath("/");
             com.grocery.dao.ProductDAO productDao = new com.grocery.dao.ProductDAO(basePath);
             String productName = "Unknown Product";
-
+            
             try {
                 List<String> products = productDao.getAllProducts();
                 for (String line : products) {
@@ -57,21 +57,21 @@ public class InventoryServlet extends HttpServlet {
 
             Inventory inventory = new Inventory(inventoryId, productId, productName, addedStock, supplier, "Pending");
             dao.addInventory(inventory);
-
+            
             String id = UUID.randomUUID().toString().substring(0, 8);
-            notificationDao.addNotification(new Notification(id, "Delivery", "New Inventory Request",
-                    "Admin requested " + addedStock + " units of " + productName + " from " + supplier + ".", new java.util.Date().toString(), false));
-
+            notificationDao.addNotification(new Notification(id, "Delivery", "New Inventory Request", 
+                "Admin requested " + addedStock + " units of " + productName + " from " + supplier + ".", new java.util.Date().toString(), false));
+        
         } else if ("updateStatus".equals(action)) {
             String invId = request.getParameter("inventoryId");
             String newStatus = request.getParameter("status");
             String basePath = getServletContext().getRealPath("/");
-
+            
             try {
                 List<String> records = dao.getAllInventory();
                 List<String> updatedRecords = new java.util.ArrayList<>();
                 Inventory target = null;
-
+                
                 for (String line : records) {
                     String[] parts = line.split(",", -1);
                     if (parts.length >= 6 && parts[0].trim().equals(invId)) {
@@ -82,12 +82,12 @@ public class InventoryServlet extends HttpServlet {
                         updatedRecords.add(line);
                     }
                 }
-
+                
                 // Save updated inventory records
                 try (java.io.FileWriter fw = new java.io.FileWriter(basePath + "data/inventory.txt", false)) {
                     for (String r : updatedRecords) fw.write(r + "\n");
                 }
-
+                
                 // If Completed, update products.txt
                 if ("Completed".equalsIgnoreCase(newStatus) && target != null) {
                     String pId = target.getProductId();
@@ -110,7 +110,7 @@ public class InventoryServlet extends HttpServlet {
                         for (String pl : pLines) pfw.write(pl + "\n");
                     }
                 }
-
+                
                 // Notifications
                 String nid = UUID.randomUUID().toString().substring(0, 8);
                 String role = "Restocked".equals(newStatus) ? "Delivery" : "Admin";

@@ -3,7 +3,7 @@
     String username = (String) session.getAttribute("username");
     String role = (String) session.getAttribute("role");
     String userId = (String) session.getAttribute("userId");
-
+    
     if (username == null) {
         response.sendRedirect("login.jsp");
         return;
@@ -99,7 +99,7 @@
         .notif-card{display:flex;gap:20px;padding:24px;border-radius:20px;background:#f8fafc;margin-bottom:20px;border:1px solid #e2e8f0;transition:0.3s;position:relative;}
         .notif-card:hover{border-color:var(--primary-light);background:white;transform:translateX(5px);}
         .notif-card.unread{border-left:5px solid var(--primary-light);background:rgba(16,185,129,0.02);}
-
+        
         .icon-box{width:60px;height:60px;border-radius:16px;display:flex;justify-content:center;align-items:center;font-size:24px;flex-shrink:0;}
         .icon-order{background:#dcfce7;color:#166534;}
         .icon-promo{background:#fef3c7;color:#92400e;}
@@ -183,7 +183,7 @@
                 String msg = n[3];
                 String time = n[4];
                 boolean isRead = "read".equalsIgnoreCase(n[5]);
-
+                
                 String iconClass = "icon-order";
                 String icon = "fa-bell";
                 if (title.toLowerCase().contains("order")) { iconClass="icon-order"; icon="fa-cart-shopping"; }

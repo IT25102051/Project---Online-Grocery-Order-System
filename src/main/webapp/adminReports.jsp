@@ -9,7 +9,7 @@
     }
 
     String dataDir = application.getRealPath("/") + "data" + File.separator;
-
+    
     // 1. Read Products (Product Stock & Low Stock)
     List<String[]> allProducts = new ArrayList<>();
     List<String[]> lowStockProducts = new ArrayList<>();
@@ -36,7 +36,7 @@
     List<String[]> allOrders = new ArrayList<>();
     double todayRevenue = 0.0;
     int todayOrderCount = 0;
-
+    
     // Simulate simple date check for "today" (Since orders.txt doesn't have a date field, we assume latest orders are recent. But let's check payments for date if possible, or just sum all for demo, or assume last 24hrs if we had dates. Since we lack dates in orders.txt, we will just sum "Confirmed" as today for demo purposes).
     File of = new File(dataDir + "orders.txt");
     if (of.exists()) {
@@ -85,7 +85,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         body { background: #f8fafc; display: flex; min-height: 100vh; color: #0f172a; }
-
+        
         .sidebar { width: 260px; background: linear-gradient(135deg, #064e3b 0%, #10b981 100%); color: white; padding: 20px 0; position: fixed; height: 100vh; overflow-y: auto; box-shadow: 2px 0 20px rgba(0,0,0,0.1); }
         .sidebar-brand { text-align: center; padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.18); margin-bottom: 20px; }
         .logo-text { font-size: 26px; font-weight: 800; color: white; letter-spacing: 1px; }
@@ -102,14 +102,14 @@
         .sidebar-footer { position: absolute; bottom: 0; width: 100%; padding: 20px; }
         .logout-btn { display: block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 10px; padding: 12px 14px; text-align: center; color: white; font-weight: 600; }
         .logout-btn:hover { background: rgba(255,255,255,0.18); }
-
+        
         .main { margin-left: 260px; flex: 1; padding-bottom: 50px; }
         .topbar { background: white; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
         .topbar-left h2 { margin: 0; color: #0f172a; font-size: 26px; letter-spacing: -0.02em; font-weight: 800; }
         .breadcrumb { color: #64748b; font-size: 13px; margin-top: 8px; font-weight: 500; }
-
+        
         .content { padding: 30px; }
-
+        
         /* Dashboard Stats */
         .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 30px; }
         .stat-card { background: white; padding: 24px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; display: flex; flex-direction: column; }
@@ -120,13 +120,13 @@
         .stat-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
         .stat-num { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
         .stat-label { color: #64748b; font-size: 14px; font-weight: 600; }
-
+        
         /* Panels */
         .reports-container { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .panel { background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; overflow: hidden; }
         .panel-header { padding: 20px 24px; border-bottom: 1px solid #f1f5f9; background: #fafafa; display: flex; justify-content: space-between; align-items: center; }
         .panel-header h3 { font-size: 18px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 10px; }
-
+        
         .table-wrap { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; }
         th, td { text-align: left; padding: 16px 24px; border-bottom: 1px solid #f1f5f9; }
@@ -134,11 +134,11 @@
         tbody tr:hover { background: #f8fafc; }
         .td-id { font-family: monospace; color: #64748b; }
         .td-amount { font-weight: 700; color: #10b981; }
-
+        
         .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; }
         .badge.low { background: #fee2e2; color: #dc2626; }
         .badge.ok { background: #d1fae5; color: #059669; }
-
+        
         .empty-state { padding: 40px; text-align: center; color: #94a3b8; font-weight: 500; }
     </style>
 </head>
@@ -268,7 +268,7 @@
                             <% if(allProducts.isEmpty()) { %>
                                 <tr><td colspan="5" class="empty-state">No products found.</td></tr>
                             <% } else {
-                                for(String[] p : allProducts) {
+                                for(String[] p : allProducts) { 
                                     int stock = 0; try { stock = Integer.parseInt(p[4].trim()); } catch(Exception e){}
                                 %>
                                 <tr>
@@ -339,7 +339,7 @@
                             <% if(restockHistory.isEmpty()) { %>
                                 <tr><td colspan="5" class="empty-state">No restock records found.</td></tr>
                             <% } else {
-                                for(String[] row : restockHistory) {
+                                for(String[] row : restockHistory) { 
                                     if (row.length < 6) continue;
                                 %>
                                 <tr>

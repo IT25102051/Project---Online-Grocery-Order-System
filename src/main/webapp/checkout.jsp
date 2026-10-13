@@ -226,25 +226,25 @@
     <div class="summary-card">
         <h2>Order Summary</h2>
         <div class="summary-items">
-            <%
-                Map<String,String> emojiMap = new HashMap<>();
-                emojiMap.put("Fruits","🍎"); emojiMap.put("Dairy","🥛");
-                emojiMap.put("Grains","🌾"); emojiMap.put("Vegetables","🥦");
-                emojiMap.put("Bakery","🍞");
+        <%
+            Map<String,String> emojiMap = new HashMap<>();
+            emojiMap.put("Fruits","🍎"); emojiMap.put("Dairy","🥛");
+            emojiMap.put("Grains","🌾"); emojiMap.put("Vegetables","🥦");
+            emojiMap.put("Bakery","🍞");
 
-                for (String[] c : cartItems) {
-                    String[] prod = productMap.get(c[2].trim());
-                    String pname  = prod != null ? prod[1].trim() : c[2].trim();
-                    String pcat   = prod != null && prod.length >= 3 ? prod[2].trim() : "";
-                    int qty = 1; try { qty = Integer.parseInt(c[3].trim()); } catch(Exception e){}
-                    double price = 0; try { if(prod!=null) price = Double.parseDouble(prod[3].trim()); } catch(Exception e){}
-                    String emoji = emojiMap.getOrDefault(pcat, "🛒");
-            %>
+            for (String[] c : cartItems) {
+                String[] prod = productMap.get(c[2].trim());
+                String pname  = prod != null ? prod[1].trim() : c[2].trim();
+                String pcat   = prod != null && prod.length >= 3 ? prod[2].trim() : "";
+                int qty = 1; try { qty = Integer.parseInt(c[3].trim()); } catch(Exception e){}
+                double price = 0; try { if(prod!=null) price = Double.parseDouble(prod[3].trim()); } catch(Exception e){}
+                String emoji = emojiMap.getOrDefault(pcat, "🛒");
+        %>
             <div class="summary-item">
                 <span class="summary-item-name"><%= emoji %> <%= pname %> × <%= qty %></span>
                 <span class="summary-item-price">Rs. <%= String.format("%.2f", price * qty) %></span>
             </div>
-            <% } %>
+        <% } %>
         </div>
 
         <div class="summary-row"><span>Subtotal</span><span>Rs. <%= String.format("%.2f", subtotal) %></span></div>

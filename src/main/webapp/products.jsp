@@ -42,12 +42,26 @@
     for (String[] p : products) {
         if (p.length >= 3) categories.add(p[2]);
     }
-    int notificationCount = 0;
+    boolean hasUnreadNotifications = false;
     File notificationFile = new File(application.getRealPath("/") + "data/notifications.txt");
     if (notificationFile.exists()) {
         try (BufferedReader br = new BufferedReader(new FileReader(notificationFile))) {
-            while (br.readLine() != null) {
-                notificationCount++;
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
+                String[] raw = line.split(",", 6);
+                if (raw.length >= 6) {
+                    String recipient = raw[1].trim();
+                    String readFlag = raw[5].trim();
+                    boolean allowed = "All".equalsIgnoreCase(recipient)
+                            || recipient.equalsIgnoreCase(role)
+                            || recipient.equalsIgnoreCase(userId);
+                    if (allowed && !"read".equalsIgnoreCase(readFlag)) {
+                        hasUnreadNotifications = true;
+                        break;
+                    }
+                }
             }
         }
     }
@@ -147,10 +161,18 @@
         <a href="products.jsp"><i class="fa-solid fa-store"></i> Products</a>
         <a href="cart.jsp?userId=<%= userId %>"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
         <a href="OrderHistoryServlet"><i class="fa-solid fa-box"></i> Orders</a>
-        <a href="notifications.jsp"><i class="fa-solid fa-bell"></i> Notifications<%= notificationCount > 0 ? " (" + notificationCount + ")" : "" %></a>
+        <a href="notifications.jsp">
+            <i class="fa-solid fa-bell" style="position: relative;">
+                <% if (hasUnreadNotifications) { %>
+                    <span style="position: absolute; top: -3px; right: -3px; display: block; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; border: 1px solid white;"></span>
+                <% } %>
+            </i> Notifications
+        </a>
         <a href="reviews.jsp"><i class="fa-solid fa-star"></i> Reviews</a>
         <a href="LogoutServlet" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-        <div class="avatar"><%= username.substring(0,1).toUpperCase() %></div>
+        <a href="profile.jsp" class="avatar-link" title="My Profile" style="text-decoration: none;">
+            <div class="avatar" style="cursor: pointer; transition: transform 0.2s ease;"><%= username.substring(0,1).toUpperCase() %></div>
+        </a>
     </div>
 </div>
 

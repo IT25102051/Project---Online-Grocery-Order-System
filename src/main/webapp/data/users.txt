@@ -1,0 +1,4 @@
+U002,Admin User,admin@gmail.com,admin123,Admin
+a8c2a05b-b2bb-4ef4-8b75-d60932828269,VINUKA RANDEETH WEERATHUNGA,weerathungavinu@gmail.com,vinuka123,Customer
+d13cb516-344c-4b6a-b0af-e0f7fbfb2c06,Chaminda,chami@gmail.com,chami123,Delivery
+9ff3f542-25cd-4e7b-9ed3-6658f834a289,Yenuli Minupama,yenuli@gmail.com,yenuli12,Customer

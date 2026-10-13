@@ -5,15 +5,26 @@ import java.io.*;
 import java.util.*;
 
 public class ProductDAO {
-    private final String FILE_PATH = "data/products.txt";
+    private String filePath;
+
+    public ProductDAO() {
+        // Fallback for cases where path isn't provided
+        this.filePath = "data/products.txt";
+    }
+
+    public ProductDAO(String basePath) {
+        this.filePath = basePath + File.separator + "data" + File.separator + "products.txt";
+    }
 
     public void addProduct(Product product) throws IOException {
-        File file = new File(FILE_PATH);
-        file.getParentFile().mkdirs();
+        File file = new File(filePath);
+        if (file.getParentFile() != null) {
+            file.getParentFile().mkdirs();
+        }
 
-        FileWriter fw = new FileWriter(file, true);
-        fw.write(product.toFileString() + "\n");
-        fw.close();
+        try (FileWriter fw = new FileWriter(file, true)) {
+            fw.write(product.toFileString() + "\n");
+        }
     }
 
     public List<String> getAllProducts() throws IOException {
@@ -46,7 +57,7 @@ public class ProductDAO {
 
     private List<String> readFile() throws IOException {
         List<String> lines = new ArrayList<>();
-        File file = new File(FILE_PATH);
+        File file = new File(filePath);
 
         if (!file.exists()) return lines;
 
@@ -62,12 +73,10 @@ public class ProductDAO {
     }
 
     private void writeFile(List<String> lines) throws IOException {
-        FileWriter fw = new FileWriter(FILE_PATH, false);
-
-        for (String line : lines) {
-            fw.write(line + "\n");
+        try (FileWriter fw = new FileWriter(filePath, false)) {
+            for (String line : lines) {
+                fw.write(line + "\n");
+            }
         }
-
-        fw.close();
     }
 }

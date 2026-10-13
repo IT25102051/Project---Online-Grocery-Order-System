@@ -1,0 +1,5 @@
+INV-1778950871848,P009,Big Onions (B-Onion) 1kg,3,Chaminda,Completed
+INV-1778951281911,P013,Motha Jelly Strawberry (100g),1,Chaminda,Completed
+INV-1778952064601,P017,Sustagen Vanilla (400g),5,Chaminda,Completed
+INV-1778959491586,P020,Elephant House Pani kurumba 900ML,12,Chaminda,Completed
+INV-1779107602771,P003,Dilmah Premium Ceylon Tea (400g),3,Chaminda,Pending

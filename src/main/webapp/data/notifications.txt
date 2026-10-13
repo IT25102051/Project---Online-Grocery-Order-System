@@ -1,0 +1,125 @@
+d4f0f86c,Customer,Weekend Alerts!!!!,10% discount for your 5th order for this weekend!,Fri May 15 21:22:46 GMT+03:00 2026,read
+6acb3bc9,Delivery,welcome our delivery boy!,Give us to good service and we will give good payment!,Fri May 15 21:24:06 GMT+03:00 2026,read
+db0d4041,Delivery,Order Ready for Pickup,Order  is prepared and ready for pickup by the delivery team.,Sat May 16 10:06:17 GMT+03:00 2026,read
+2486faec,Admin,Order Picked Up,Delivery person Chaminda has picked up order .,Sat May 16 10:07:44 GMT+03:00 2026,read
+0a25721b,022222,Your Order Is On The Way,Your order  has been picked up and is on the way.,Sat May 16 10:07:44 GMT+03:00 2026,read
+1bc082b5,Admin,New order is available!,A new order ORD-1778916432854 has been placed by VINUKA RANDEETH WEERATHUNGA.,Sat May 16 10:27:12 GMT+03:00 2026,read
+44c1055c,Delivery,Order is ready!!,come and pick,Sat May 16 10:29:16 GMT+03:00 2026,read
+dba0037e,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order .,Sat May 16 10:30:35 GMT+03:00 2026,read
+c9863aa8,Delivery,Order is ready,Summary Order ID ORD-1778917645184 Customer VINUKA RANDEETH WEERATHUNGA Total Amount $257.30 Payment Method Cash on Delivery Order Status beliatte Delivery ID hambanthota;0704673918;Confirmed; Shipping & Contact Address weeraniwasa Phone miriswatte,Sat May 16 10:49:16 GMT+03:00 2026,read
+d3924d5c,Admin,New order is available!,A new order ORD-1778921502375 has been placed by VINUKA RANDEETH WEERATHUNGA.,Sat May 16 11:51:42 GMT+03:00 2026,read
+e4c16ce1,Delivery,Order is Ready!,pick now.,Sat May 16 11:54:13 GMT+03:00 2026,read
+1b0bbf67,Admin,New order is available!,A new order ORD-1778922656379 has been placed by VINUKA RANDEETH WEERATHUNGA.,Sat May 16 12:10:56 GMT+03:00 2026,read
+46950964,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Card Payment Received,Your payment for order ORD-1778922656379 has been processed successfully.,Sat May 16 12:10:56 GMT+03:00 2026,read
+c66391bb,Delivery,Order is ready!,Order ORD-1778922656379 is prepared and ready for pickup by the delivery team.,Sat May 16 12:11:49 GMT+03:00 2026,read
+01f68584,Delivery,Order is ready!,come and pick,Sat May 16 12:12:43 GMT+03:00 2026,read
+a290ca1f,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778876325750.,Sat May 16 12:13:27 GMT+03:00 2026,read
+10ed7c50,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Your order is pick up and on the way,Your order ORD-1778876325750 has been picked up and is on the way.,Sat May 16 12:13:27 GMT+03:00 2026,read
+71d6e80a,Admin,COD Payment Collected,Delivery person Chaminda has delivered order ORD-1778876325750 to VINUKA RANDEETH WEERATHUNGA and collected Cash on Delivery payment. Please mark the payment as Completed.,Sat May 16 12:13:32 GMT+03:00 2026,read
+96c56168,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778876325750.,Sat May 16 12:13:32 GMT+03:00 2026,read
+7828792a,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Order Delivered,Your order ORD-1778876325750 has been delivered successfully. Thank you for shopping with FreshCart!,Sat May 16 12:13:32 GMT+03:00 2026,read
+05c45ba6,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778916432854.,Sat May 16 12:21:06 GMT+03:00 2026,read
+32e80020,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Your order is pick up and on the way,Your order ORD-1778916432854 has been picked up and is on the way.,Sat May 16 12:21:06 GMT+03:00 2026,read
+370bd66e,Admin,New order is available!,A new order ORD-1778923973954 has been placed by Yenuli Minupama.,Sat May 16 12:32:53 GMT+03:00 2026,read
+5103e9fd,Delivery,Order is ready!,Order ORD-1778923973954 is prepared and ready for pickup by the delivery team.,Sat May 16 12:33:27 GMT+03:00 2026,read
+d5576ad1,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778923973954.,Sat May 16 12:33:52 GMT+03:00 2026,read
+095c3d0c,Admin,New order is available!,A new order ORD-1778925013315 has been placed by Yenuli Minupama.,Sat May 16 12:50:13 GMT+03:00 2026,read
+0e6f2afc,Delivery,Order is ready!,Order ORD-1778925013315 is prepared and ready for pickup by the delivery team.,Sat May 16 12:52:17 GMT+03:00 2026,read
+9cbeb815,Delivery,order ready,can you pick up now,Sat May 16 12:53:13 GMT+03:00 2026,read
+8e611d90,Admin,COD Payment Collected,Delivery person Chaminda has delivered order ORD-1778923973954 to Yenuli Minupama and collected Cash on Delivery payment. Please mark the payment as Completed.,Sat May 16 12:53:44 GMT+03:00 2026,read
+7da04ec6,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778923973954.,Sat May 16 12:53:44 GMT+03:00 2026,read
+17efebba,Admin,COD Payment Collected,Delivery person Chaminda has delivered order ORD-1778916432854 to VINUKA RANDEETH WEERATHUNGA and collected Cash on Delivery payment. Please mark the payment as Completed.,Sat May 16 12:53:47 GMT+03:00 2026,read
+353614cb,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778916432854.,Sat May 16 12:53:47 GMT+03:00 2026,read
+fd2e6925,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Order Delivered,Your order ORD-1778916432854 has been delivered successfully. Thank you for shopping with FreshCart!,Sat May 16 12:53:47 GMT+03:00 2026,read
+ed3ec3a7,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778925013315.,Sat May 16 12:53:50 GMT+03:00 2026,read
+42c952e0,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778925013315.,Sat May 16 12:53:54 GMT+03:00 2026,read
+360115dc,Delivery,Low Stock Alert: keeri samba,Stock for keeri samba is below threshold (10). Please prioritize delivery and replenishment.,Sat May 16 13:17:46 GMT+03:00 2026,read
+dba9c58e,Delivery,Inventory Item Removed,An inventory item with ID I001 has been removed from stock.,Sat May 16 13:18:32 GMT+03:00 2026,read
+273bf469,Delivery,Inventory Item Removed,An inventory item with ID I002 has been removed from stock.,Sat May 16 13:18:35 GMT+03:00 2026,read
+7d3f0bad,Delivery,Low Stock Alert: keeri samba,Stock for keeri samba is below threshold (10). Please prioritize delivery and replenishment.,Sat May 16 13:18:56 GMT+03:00 2026,read
+0e9ae478,Admin,New order is available!,A new order ORD-1778935909889 has been placed by Yenuli Minupama.,Sat May 16 15:51:49 GMT+03:00 2026,read
+eb66cc2d,Delivery,Order is ready!,Order ORD-1778935909889 is prepared and ready for pickup by the delivery team.,Sat May 16 15:52:46 GMT+03:00 2026,read
+5f4ee06b,Delivery,Order is ready!,hurry up chamii,Sat May 16 15:53:32 GMT+03:00 2026,read
+936ed5a3,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778917645184.,Sat May 16 15:53:53 GMT+03:00 2026,read
+3fb3c494,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Your order is on the way,Your order ORD-1778917645184 has been picked up and is on the way by delivery personnel Chaminda.,Sat May 16 15:53:53 GMT+03:00 2026,read
+ab2f1dab,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778922656379.,Sat May 16 15:53:56 GMT+03:00 2026,read
+4d78dbb9,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Your order is on the way,Your order ORD-1778922656379 has been picked up and is on the way by delivery personnel Chaminda.,Sat May 16 15:53:56 GMT+03:00 2026,read
+0df17547,Admin,COD Payment Collected,Delivery person Chaminda has delivered order ORD-1778917645184 to VINUKA RANDEETH WEERATHUNGA and collected Cash on Delivery payment. Please mark the payment as Completed.,Sat May 16 15:53:59 GMT+03:00 2026,read
+0ca9b91d,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778917645184.,Sat May 16 15:53:59 GMT+03:00 2026,read
+7077e618,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Order Delivered,Your order ORD-1778917645184 has been delivered successfully. Thank you for shopping with CeylonFresh!,Sat May 16 15:53:59 GMT+03:00 2026,read
+813b5a43,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778922656379.,Sat May 16 15:54:01 GMT+03:00 2026,read
+8ae02f56,a8c2a05b-b2bb-4ef4-8b75-d60932828269,Order Delivered,Your order ORD-1778922656379 has been delivered successfully. Thank you for shopping with CeylonFresh!,Sat May 16 15:54:01 GMT+03:00 2026,read
+f98c385c,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778935909889.,Sat May 16 15:54:04 GMT+03:00 2026,read
+3ef8bf7e,Admin,COD Payment Collected,Delivery person Chaminda has delivered order ORD-1778935909889 to Yenuli Minupama and collected Cash on Delivery payment. Please mark the payment as Completed.,Sat May 16 15:54:15 GMT+03:00 2026,read
+9b6d416c,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778935909889.,Sat May 16 15:54:15 GMT+03:00 2026,read
+422bdd24,Admin,Stock Restocked: Dhal(Parippu)(1Kg),Added 10 units to Dhal(Parippu)(1Kg).,Sat May 16 15:57:16 GMT+03:00 2026,read
+ab505a35,Admin,New order is available!,A new order ORD-1778937720805 has been placed by Yenuli Minupama.,Sat May 16 16:22:00 GMT+03:00 2026,read
+6fbaa354,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Card Payment Received,Your payment for order ORD-1778937720805 has been processed successfully.,Sat May 16 16:22:00 GMT+03:00 2026,read
+bd4ce531,Delivery,Order is ready!,Order ORD-1778937720805 is prepared and ready for pickup by the delivery team.,Sat May 16 16:22:26 GMT+03:00 2026,read
+1ea6ec42,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778937720805.,Sat May 16 16:23:25 GMT+03:00 2026,read
+6f02acf9,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Your order is on the way,Your order ORD-1778937720805 has been picked up and is on the way by delivery personnel Chaminda.,Sat May 16 16:23:25 GMT+03:00 2026,read
+954e489b,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778937720805.,Sat May 16 16:23:33 GMT+03:00 2026,read
+aebb596f,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Order Delivered,Your order ORD-1778937720805 has been delivered successfully. Thank you for shopping with CeylonFresh!,Sat May 16 16:23:33 GMT+03:00 2026,read
+7f78e607,Delivery,Inventory Item Removed,An inventory item with ID I003 has been removed from stock.,Sat May 16 19:18:38 GMT+03:00 2026,read
+fb2a0807,Delivery,Inventory Item Removed,An inventory item with ID I005 has been removed from stock.,Sat May 16 19:18:41 GMT+03:00 2026,read
+71ae24f5,Admin,Stock Restocked: Dhal(Parippu)(1Kg),Added 15 units to Dhal(Parippu)(1Kg).,Sat May 16 19:19:27 GMT+03:00 2026,read
+23d16666,Admin,Stock Restocked: Dhal(Parippu)(1Kg),Added 6 units to Dhal(Parippu)(1Kg).,Sat May 16 19:26:32 GMT+03:00 2026,read
+75d0eef9,Delivery,Inventory Item Removed,An inventory item with ID INV-1778936220048 has been removed from stock.,Sat May 16 19:34:17 GMT+03:00 2026,read
+7589ca8d,Delivery,Inventory Item Removed,An inventory item with ID INV-1778948349617 has been removed from stock.,Sat May 16 19:34:20 GMT+03:00 2026,read
+81bcf9dc,Delivery,Inventory Item Removed,An inventory item with ID INV-1778948775157 has been removed from stock.,Sat May 16 19:34:23 GMT+03:00 2026,read
+d24ec3bc,Admin,Stock Restocked: Dhal(Parippu)(1Kg),Added 8 units to Dhal(Parippu)(1Kg).,Sat May 16 19:34:38 GMT+03:00 2026,read
+7e243b60,Delivery,Inventory Item Removed,An inventory item with ID INV-1778949263269 has been removed from stock.,Sat May 16 19:45:57 GMT+03:00 2026,read
+a9d3fca3,Delivery,New Inventory Request,Admin requested 8 units of Dhal(Parippu)(1Kg) from Chaminda.,Sat May 16 19:46:09 GMT+03:00 2026,read
+20e9684d,Delivery,New Inventory Request,Admin requested 8 units of Dhal(Parippu)(1Kg) from Chaminda.,Sat May 16 19:47:05 GMT+03:00 2026,read
+23780efd,Delivery,New Inventory Request,Admin requested 10 units of Maliban Gold Marie (300g) from Chaminda.,Sat May 16 19:56:06 GMT+03:00 2026,read
+c5757a6e,Delivery,Inventory Item Removed,An inventory item with ID INV-1778949263269 has been removed from stock.,Sat May 16 20:01:09 GMT+03:00 2026,read
+0f169f7a,Delivery,Inventory Item Removed,An inventory item with ID INV-1778950557404 has been removed from stock.,Sat May 16 20:01:11 GMT+03:00 2026,read
+26d10907,Delivery,New Inventory Request,Admin requested 3 units of Big Onions (B-Onion) 1kg from Chaminda.,Sat May 16 20:01:28 GMT+03:00 2026,read
+fd7273c1,Admin,Inventory Update,Inventory INV-1778950871848 status updated to: Approved,Sat May 16 20:06:51 GMT+03:00 2026,read
+48a93bde,Delivery,New Inventory Request,Admin requested 1 units of Motha Jelly Strawberry (100g) from Chaminda.,Sat May 16 20:08:19 GMT+03:00 2026,read
+a41a797f,Admin,Inventory Update,Inventory INV-1778950871848 status updated to: Delivered,Sat May 16 20:08:34 GMT+03:00 2026,read
+d49a5247,Admin,Inventory Update,Inventory INV-1778951281911 status updated to: Approved,Sat May 16 20:08:40 GMT+03:00 2026,read
+6149288e,Admin,Inventory Update,Inventory INV-1778951281911 status updated to: Delivered,Sat May 16 20:08:44 GMT+03:00 2026,read
+40d1fff0,Admin,Inventory Update,Inventory INV-1778951281911 status updated to: Completed,Sat May 16 20:08:59 GMT+03:00 2026,read
+0900c620,Admin,Inventory Update,Inventory INV-1778950871848 status updated to: Completed,Sat May 16 20:09:01 GMT+03:00 2026,read
+486b693d,Admin,New order is available!,A new order ORD-1778951806210 has been placed by Yenuli Minupama.,Sat May 16 20:16:46 GMT+03:00 2026,read
+5c545f53,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Card Payment Received,Your payment for order ORD-1778951806210 has been processed successfully.,Sat May 16 20:16:46 GMT+03:00 2026,read
+b1714916,Delivery,Order is ready!,Order ORD-1778951806210 is prepared and ready for pickup by the delivery team.,Sat May 16 20:17:41 GMT+03:00 2026,read
+132bb0c0,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778951806210.,Sat May 16 20:18:03 GMT+03:00 2026,read
+b2d04857,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Your order is on the way,Your order ORD-1778951806210 has been picked up and is on the way by delivery personnel Chaminda.,Sat May 16 20:18:03 GMT+03:00 2026,read
+f841e8ea,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778951806210.,Sat May 16 20:18:20 GMT+03:00 2026,read
+b59d3960,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Order Delivered,Your order ORD-1778951806210 has been delivered successfully. Thank you for shopping with CeylonFresh!,Sat May 16 20:18:20 GMT+03:00 2026,read
+9a136d86,Delivery,New Inventory Request,Admin requested 5 units of Sustagen Vanilla (400g) from Chaminda.,Sat May 16 20:21:26 GMT+03:00 2026,read
+87cf1bbf,Admin,Inventory Update,Inventory INV-1778952064601 status updated to: Approved,Sat May 16 20:21:41 GMT+03:00 2026,read
+0586b929,Admin,Inventory Update,Inventory INV-1778952064601 status updated to: Delivered,Sat May 16 20:21:48 GMT+03:00 2026,read
+950a3847,Admin,Inventory Update,Inventory INV-1778952064601 status updated to: Completed,Sat May 16 20:22:05 GMT+03:00 2026,read
+e1e36c8a,Delivery,Low Stock Alert: Elephant House Pani kurumba 900ML,Stock for Elephant House Pani kurumba 900ML is low (10). Please prepare for replenishment.,Sat May 16 22:16:33 GMT+03:00 2026,read
+dd6eaf84,Admin,New order is available!,A new order ORD-1778958993438 has been placed by Yenuli Minupama.,Sat May 16 22:16:33 GMT+03:00 2026,read
+63c891b2,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Card Payment Received,Your payment for order ORD-1778958993438 has been processed successfully.,Sat May 16 22:16:33 GMT+03:00 2026,read
+01ad118d,Delivery,Order is ready!,Order ORD-1778958993438 is prepared and ready for pickup by the delivery team.,Sat May 16 22:17:38 GMT+03:00 2026,read
+e10dfd03,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1778958993438.,Sat May 16 22:18:03 GMT+03:00 2026,read
+a946bd23,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Your order is on the way,Your order ORD-1778958993438 has been picked up and is on the way by delivery personnel Chaminda.,Sat May 16 22:18:03 GMT+03:00 2026,read
+16cbbab7,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1778958993438.,Sat May 16 22:18:38 GMT+03:00 2026,read
+30ab8c87,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Order Delivered,Your order ORD-1778958993438 has been delivered successfully. Thank you for shopping with CeylonFresh!,Sat May 16 22:18:38 GMT+03:00 2026,read
+f490abdb,Delivery,New Inventory Request,Admin requested 12 units of Elephant House Pani kurumba 900ML from Chaminda.,Sat May 16 22:25:33 GMT+03:00 2026,read
+d3a74eb1,Admin,Inventory Update,Inventory INV-1778959491586 status updated to: Approved,Sat May 16 22:25:58 GMT+03:00 2026,read
+e01b80e4,Admin,Inventory Update,Inventory INV-1778959491586 status updated to: Delivered,Sat May 16 22:26:07 GMT+03:00 2026,read
+c4413a2b,Admin,Inventory Update,Inventory INV-1778959491586 status updated to: Completed,Sat May 16 22:26:33 GMT+03:00 2026,read
+801155a0,Admin,New order is available!,A new order ORD-1778964705310 has been placed by Yenuli Minupama.,Sat May 16 23:51:45 GMT+03:00 2026,unread
+fb73d692,Customer,Weekend alert!!,12% discounts for 2 more orders!,Mon May 18 11:13:08 GMT+03:00 2026,read
+767d28e6,Delivery,New Inventory Request,Admin requested 2 units of Munchee Super Cream Cracker (500g) from Chaminda.,Mon May 18 11:43:24 GMT+03:00 2026,unread
+8f584b18,Delivery,Inventory Item Removed,An inventory item with ID INV-1779093784089 has been removed from stock.,Mon May 18 11:43:53 GMT+03:00 2026,unread
+7bc4eb88,Admin,New order is available!,A new order ORD-1779098206379 has been placed by Yenuli Minupama.,Mon May 18 12:56:46 GMT+03:00 2026,unread
+89dc21c1,Delivery,Order is ready!,Order ORD-1779098206379 is prepared and ready for pickup by the delivery team.,Mon May 18 12:57:10 GMT+03:00 2026,unread
+4abdc4bd,Admin,Order Picked Up,Delivery person Chaminda has picked up order ORD-1779098206379.,Mon May 18 12:57:23 GMT+03:00 2026,unread
+703fc9d1,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Your order is on the way,Your order ORD-1779098206379 has been picked up and is on the way by delivery personnel Chaminda.,Mon May 18 12:57:23 GMT+03:00 2026,unread
+e8a46857,Admin,COD Payment Collected,Delivery person Chaminda has delivered order ORD-1779098206379 to Yenuli Minupama and collected Cash on Delivery payment. Payment is marked as Completed.,Mon May 18 12:57:37 GMT+03:00 2026,unread
+2f0607ea,Admin,Order Delivered,Delivery person Chaminda has successfully delivered order ORD-1779098206379.,Mon May 18 12:57:37 GMT+03:00 2026,unread
+872c8fd7,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Order Delivered,Your order ORD-1779098206379 has been delivered successfully. Thank you for shopping with CeylonFresh!,Mon May 18 12:57:37 GMT+03:00 2026,unread
+f3ab0762,Admin,New order is available!,A new order ORD-1779104278055 has been placed by Yenuli Minupama.,Mon May 18 14:37:58 GMT+03:00 2026,unread
+8d1ed67b,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Card Payment Received,Your payment for order ORD-1779104278055 has been processed successfully.,Mon May 18 14:37:58 GMT+03:00 2026,unread
+66274d38,Admin,New order is available!,A new order ORD-1779106463932 has been placed by Yenuli Minupama.,Mon May 18 15:14:23 GMT+03:00 2026,unread
+2ad8dd1a,Admin,New order is available!,A new order ORD-1779106755052 has been placed by Yenuli Minupama.,Mon May 18 15:19:15 GMT+03:00 2026,unread
+dd15774d,9ff3f542-25cd-4e7b-9ed3-6658f834a289,Card Payment Received,Your payment for order ORD-1779106755052 has been processed successfully.,Mon May 18 15:19:15 GMT+03:00 2026,unread
+52440eb5,Delivery,Delivery is ready,come and pickup now,Mon May 18 15:24:45 GMT+03:00 2026,unread
+9636b592,Delivery,New Inventory Request,Admin requested 3 units of Dilmah Premium Ceylon Tea (400g) from Chaminda.,Mon May 18 15:33:35 GMT+03:00 2026,unread

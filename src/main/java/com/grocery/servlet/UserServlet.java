@@ -24,7 +24,94 @@ public class UserServlet extends HttpServlet {
             register(request, response);
         } else if ("delete".equals(action)) {
             deleteUser(request, response);
+        } else if ("updateProfile".equals(action)) {
+            updateProfile(request, response);
         }
+    }
+
+    private void updateProfile(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("userId") == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        String userId = (String) session.getAttribute("userId");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+
+        if (name == null || name.trim().isEmpty() ||
+            email == null || email.trim().isEmpty() ||
+            password == null || password.trim().isEmpty()) {
+            response.sendRedirect("profile.jsp?error=empty");
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            response.sendRedirect("profile.jsp?error=passwordMismatch");
+            return;
+        }
+
+        String filePath = getFilePath();
+        File file = new File(filePath);
+        if (!file.exists()) {
+            response.sendRedirect("profile.jsp?error=failed");
+            return;
+        }
+
+        // Check if new email is taken by another user
+        List<String> lines = new ArrayList<>();
+        boolean emailExists = false;
+        String userRole = "";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
+                String[] parts = line.split(",");
+                if (parts.length >= 5) {
+                    String currentId = parts[0].trim();
+                    String currentEmail = parts[2].trim();
+                    if (currentId.equals(userId)) {
+                        userRole = parts[4].trim();
+                    } else if (currentEmail.equalsIgnoreCase(email.trim())) {
+                        emailExists = true;
+                    }
+                }
+                lines.add(line);
+            }
+        }
+
+        if (emailExists) {
+            response.sendRedirect("profile.jsp?error=exists");
+            return;
+        }
+
+        // Re-write users.txt, modifying the matching user row
+        try (FileWriter fw = new FileWriter(file, false)) {
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                if (parts.length >= 5 && parts[0].trim().equals(userId)) {
+                    // Update user: id, name, email, password, role
+                    String updatedLine = userId + "," + name.trim() + "," + email.trim() + "," + password + "," + userRole;
+                    fw.write(updatedLine + "\n");
+                } else {
+                    fw.write(line + "\n");
+                }
+            }
+        }
+
+        // Update current session attributes
+        session.setAttribute("username", name.trim());
+        session.setAttribute("name", name.trim());
+        session.setAttribute("email", email.trim());
+
+        response.sendRedirect("profile.jsp?success=ok");
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)
@@ -71,8 +158,8 @@ public class UserServlet extends HttpServlet {
 
         // Validate fields
         if (name == null || name.trim().isEmpty() ||
-                email == null || email.trim().isEmpty() ||
-                password == null || password.trim().isEmpty()) {
+            email == null || email.trim().isEmpty() ||
+            password == null || password.trim().isEmpty()) {
             response.sendRedirect("register.jsp?error=empty");
             return;
         }

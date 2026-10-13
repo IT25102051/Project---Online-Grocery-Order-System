@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*, java.io.*" %>
 <%
     String username = (String) session.getAttribute("username");
     String userId   = (String) session.getAttribute("userId");
+    String role     = (String) session.getAttribute("role");
     if (username == null) { response.sendRedirect("login.jsp"); return; }
 
     // Orders passed from OrderHistoryServlet
@@ -14,6 +15,31 @@
     String[] statuses = {"Delivered", "Processing", "Out for Delivery", "Confirmed"};
     String[] statusColors = {"#16a34a", "#3b82f6", "#f97316", "#8b5cf6"};
     String[] statusEmojis = {"✅", "⏳", "🚚", "✔️"};
+
+    // Count active unread notifications
+    boolean hasUnreadNotifications = false;
+    File notificationFile = new File(application.getRealPath("/") + "data/notifications.txt");
+    if (notificationFile.exists()) {
+        try (BufferedReader br = new BufferedReader(new FileReader(notificationFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty()) continue;
+                String[] raw = line.split(",", 6);
+                if (raw.length >= 6) {
+                    String recipient = raw[1].trim();
+                    String readFlag = raw[5].trim();
+                    boolean allowed = "All".equalsIgnoreCase(recipient)
+                            || recipient.equalsIgnoreCase(role)
+                            || recipient.equalsIgnoreCase(userId);
+                    if (allowed && !"read".equalsIgnoreCase(readFlag)) {
+                        hasUnreadNotifications = true;
+                        break;
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -97,11 +123,19 @@
     <a class="logo" href="customerDashboard.jsp">🛒 CeylonFresh</a>
     <div class="nav-links">
         <a href="products.jsp">Products</a>
-        <a href="cart.jsp">🛒 Cart</a>
+        <a href="cart.jsp?userId=<%= userId %>">🛒 Cart</a>
         <a href="OrderHistoryServlet">Orders</a>
-        <a href="notifications.jsp">Notifications</a>
+        <a href="notifications.jsp">
+            <i class="fa-solid fa-bell" style="position: relative;">
+                <% if (hasUnreadNotifications) { %>
+                    <span style="position: absolute; top: -3px; right: -3px; display: block; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; border: 1px solid white;"></span>
+                <% } %>
+            </i> Notifications
+        </a>
         <a href="LogoutServlet" class="logout">Logout</a>
-        <div class="avatar"><%= username.substring(0,1).toUpperCase() %></div>
+        <a href="profile.jsp" class="avatar-link" title="My Profile" style="text-decoration: none;">
+            <div class="avatar" style="cursor: pointer; transition: transform 0.2s ease;"><%= username.substring(0,1).toUpperCase() %></div>
+        </a>
     </div>
 </div>
 
